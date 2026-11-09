@@ -47,7 +47,8 @@ resource "aws_instance" "frontend" {
   })
 
   tags = {
-    Name = "${var.name_prefix}-frontend-l3"
-    Role = "frontend"
+    Name    = "${var.name_prefix}-frontend-l3"
+    Role    = "frontend"
+    Project = "donatily"
   }
 }

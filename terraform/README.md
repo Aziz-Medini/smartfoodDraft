@@ -1,4 +1,18 @@
-# Terraform — L3 Réseau et socle de calcul
+# Donatily — Terraform · L3 Réseau et socle de calcul
+
+Plateforme SaaS de redistribution solidaire entre commerces et associations (Tunisie).
+
+## Architecture déployée
+
+```
+Internet → Cognito/WAF → ALB (subnets publics, 2 AZ)
+                           ↓
+              ASG Frontend (subnets publics, 2 AZ)
+                           ↓
+              ASG Backend  (subnets privés, 2 AZ) ──→ S3 Gateway Endpoint ──→ S3
+                           ↓
+              RDS + Sauvegarde Automatique (subnet privé DB) ──→ S3 (Backup)
+```
 
 ## Modules
 
@@ -22,7 +36,7 @@ terraform plan
 terraform apply
 ```
 
-Connexion à l’instance privée (pas d’IP publique) :
+Connexion à l'instance privée (pas d'IP publique) :
 
 ```powershell
 terraform output ssm_connect

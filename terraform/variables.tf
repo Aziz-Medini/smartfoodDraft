@@ -10,7 +10,7 @@ variable "aws_region" {
 variable "project_name" {
   description = "Préfixe utilisé pour nommer toutes les ressources"
   type        = string
-  default     = "smartfood"
+  default     = "donatily"
 }
 
 variable "environment" {
