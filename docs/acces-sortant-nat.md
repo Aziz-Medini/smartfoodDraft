@@ -1,6 +1,8 @@
-﻿# §5.3 — Accès sortant : NAT Gateway régional
+# §5.3 — Accès sortant : NAT Gateway régional
 
-Les instances frontend et backend sont en **sous-réseaux privés** (pas d'IP publique). Elles ont pourtant besoin de sortir vers Internet : `dnf`, Git, API AWS, etc.
+Les instances frontend (subnets publics) et backend (subnets privés) de **Donatily** ont besoin de sortir vers Internet : `dnf`, Git, API AWS, appels externes, etc.
+
+Les instances backend n'ont **pas** d'IP publique ; le NAT Gateway est leur seule sortie.
 
 ## Options considérées
 
@@ -20,7 +22,7 @@ Un NAT Gateway **régional** (un seul NAT couvrant toutes les AZ) :
 - AWS gère la disponibilité interne du NAT Gateway (SLA 99,9 %) ;
 - l'Internet Gateway reste le point d'entrée/sortie du VPC (ALB plus tard, NAT aujourd'hui).
 
-Les sous-réseaux **DB** n'ont **pas** de route Internet : la base ne doit pas sortir (principe de moindre privilège).
+Les sous-réseaux **DB** n'ont **pas** de route Internet : la base de données Donatily ne doit pas sortir (principe de moindre privilège).
 
 ## Repli
 

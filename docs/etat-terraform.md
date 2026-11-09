@@ -1,12 +1,12 @@
-# Stratégie d’état Terraform
+# Stratégie d'état Terraform — Donatily
 
 ## Choix : state **local**
 
-Le fichier d’état reste sur la machine de l’étudiant (`terraform/terraform.tfstate`). Il n’y a **pas** de backend S3 + DynamoDB.
+Le fichier d'état reste sur la machine de l'étudiant (`terraform/terraform.tfstate`). Il n'y a **pas** de backend S3 + DynamoDB.
 
 Raisons :
 
-1. L’infra Learner Lab est **éphémère** : elle est recréée puis détruite à chaque séance (`scripts/destroy.ps1`). Un state distant à maintenir n’apporte rien.
+1. L'infra Learner Lab est **éphémère** : elle est recréée puis détruite à chaque séance (`scripts/destroy.ps1`). Un state distant à maintenir n'apporte rien.
 2. Le lab facture / limite S3 et IAM ; un backend distant ajouterait des ressources hors périmètre L3.
 3. Un seul opérateur (pas de travail concurrent sur le même state).
 
@@ -30,7 +30,7 @@ Fin de séance :
 .\scripts\destroy.ps1
 ```
 
-Sans destroy, les ressources (surtout le NAT) restent facturées jusqu’à la fin du lab / du budget.
+Sans destroy, les ressources (surtout le NAT) restent facturées jusqu'à la fin du lab / du budget.
 
 ## Fichiers concernés
 

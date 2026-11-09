@@ -32,7 +32,7 @@ resource "aws_security_group" "alb" {
   }
 }
 
-# Frontend (premiere instance L3) : HTTP depuis l'ALB, egress via NAT.
+# Frontend (premiere instance L3) : HTTP depuis l'ALB Donatily, egress via NAT.
 resource "aws_security_group" "frontend" {
   name        = "${var.name_prefix}-sg-frontend"
   description = "Frontend prive: HTTP from ALB"
